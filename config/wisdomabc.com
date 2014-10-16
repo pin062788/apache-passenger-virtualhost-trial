@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+    ServerName www.wisdomabc.com
+    ServerAlias www.wisdomabc.com
+    DocumentRoot /var/www/wisdomabc.com/public 
+
+    PassengerRuby /usr/local/bin/ruby
+
+    <Directory /var/www/wisdomabc.com/public>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+    </Directory>
+
+
+  ErrorLog /var/log/wisdomabc/error.log
+
+  # Possible values include: debug, info, notice, warn, error, crit,
+  # alert, emerg.
+  LogLevel warn
+
+  LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" \"%{Host}i\" \"%{X-Forwarded-For}i\" %D" cp-log
+
+  CustomLog /var/log/wisdomabc/access.log cp-log
+
+
+</VirtualHost>
